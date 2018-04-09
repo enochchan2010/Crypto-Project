@@ -7,4 +7,8 @@ public class Driver {
 
         SHA3 encrypt = new SHA3("This is me");
     }
+
+    public String KMACXOF256(String key, int m, int l, String s) {
+        
+    }
 }
