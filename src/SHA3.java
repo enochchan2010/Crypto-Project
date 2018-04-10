@@ -97,7 +97,7 @@ public class SHA3 {
     }
 
     public String encode_string(String s) {
-        return "";
+        return left_encode(s.length()) + s;
     }
 
     public String cSHAKE256(String X, int L, String N, String S) {
