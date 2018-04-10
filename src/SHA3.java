@@ -10,11 +10,24 @@ public class SHA3 {
 
 
     public String KMACXOF256(String key, int m, int l, String s) {
+
         return  "";
     }
 
-    public void bytePad() {
+    public void bytePad(String  X, int w) {
+        if(w < 0) {
+            throw new IllegalArgumentException();
+        }
 
+        String z = left_encode(w) + X;
+        while(z.length() % 8 != 0 ) {
+            z += "0";
+        }
+
+        while((z.length() / 8) %  w != 0 ) {
+            z += "00000000";
+        }
+        return z;
     }
 
     int right_encode(int x) {
@@ -49,5 +62,9 @@ public class SHA3 {
         }
 
         return result;
+    }
+
+    public String left_encode(int x) {
+        return ""
     }
 }
