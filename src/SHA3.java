@@ -10,8 +10,8 @@ public class SHA3 {
 
 
     public String KMACXOF256(String key, int m, int l, String s) {
-
-        return  "";
+        String newX = bytePad(encode_string(key),136) + key + right_encode(0);
+        return cSHAKE256(newX, l,“KMAC"", s);
     }
 
     public void bytePad(String  X, int w) {
@@ -64,7 +64,29 @@ public class SHA3 {
         return result;
     }
 
+    // TO DOs
     public String left_encode(int x) {
         return ""
     }
+
+    public String encode_string(String s) {
+        return "";
+    }
+
+    public String cSHAKE256(String X, int L, String N, String S) {
+        if(N == "" &  S = "") {
+            return SHAKE256();
+        } else {
+            return keccak();
+        }
+    }
+
+    public String SHAKE256() {
+        return "";
+    }
+
+    public String keccak() {
+        return  "";
+    }
+
 }
