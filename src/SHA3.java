@@ -1,3 +1,5 @@
+package src;
+
 public class SHA3 {
 
     public String temp;
@@ -11,10 +13,10 @@ public class SHA3 {
 
     public String KMACXOF256(String key, int m, int l, String s) {
         String newX = bytePad(encode_string(key),136) + key + right_encode(0);
-        return cSHAKE256(newX, l,“KMAC"", s);
+        return cSHAKE256(newX, l,"KMAC", s);
     }
 
-    public void bytePad(String  X, int w) {
+    public String bytePad(String  X, int w) {
         if(w < 0) {
             throw new IllegalArgumentException();
         }
@@ -113,7 +115,7 @@ public class SHA3 {
     }
 
     public String cSHAKE256(String X, int L, String N, String S) {
-        if(N == "" &  S = "") {
+        if(N.equals("")  &  S.equals("")) {
             return SHAKE256();
         } else {
             return keccak();
@@ -121,6 +123,8 @@ public class SHA3 {
     }
 
     public String SHAKE256() {
+
+        
         return "";
     }
 
