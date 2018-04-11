@@ -39,30 +39,36 @@ public class SHA3 {
         while (Math.pow(256, n) < x) {
             n++;
         }
-    
+
         int x_i[] = new int[n+1];
         for (int i = n; i > 0; i--) {
             x_i[i] = temp % 256;
             temp /= 256;
         }
-    
+
         String o_i[] = new String[n+1];
         for (int i = 1; i <= n; i++) {
-            String binaryString = String.format("%8s", Integer.toBinaryString(x_i[i]).replace(' ', '0'));
-            o_i[i] = binaryString;
+            String binaryString = String.format("%8s", Integer.toBinaryString(x_i[i])).replace(' ', '0');
+            StringBuilder reverse = new StringBuilder();
+            reverse.append(binaryString);
+            reverse = reverse.reverse();
+            o_i[i] = reverse.toString();
         }
-    
-        String o_nPlus1 = String.format("%8s", Integer.toBinaryString(n).replace(' ', '0'));
+
+        String o_nPlus1 = String.format("%8s", Integer.toBinaryString(n)).replace(' ', '0');
+        StringBuilder o_nPlus1r = new StringBuilder();
+        o_nPlus1r.append(o_nPlus1);
+        o_nPlus1r = o_nPlus1r.reverse();
 
         String result = "";
         for (int i = 1; i <= n; i++) {
-            result += o_i[i];
+            result += o_i[i] += ' ';
         }
-        result += o_nPlus1;
-    
+        result += o_nPlus1r.toString();
+
         return result;
     }
-    
+
     public static String left_encode(int x) {
         if (x < 0 || x >= Math.pow(2, 2040)) {
             throw new IllegalArgumentException("Invalid x");
@@ -72,27 +78,33 @@ public class SHA3 {
         while (Math.pow(256, n) < x) {
             n++;
         }
-    
+
         int x_i[] = new int[n+1];
         for (int i = n; i > 0; i--) {
             x_i[i] = temp % 256;
             temp /= 256;
         }
-    
+
         String o_i[] = new String[n+1];
         for (int i = 1; i <= n; i++) {
-            String binaryString = String.format("%8s", Integer.toBinaryString(x_i[i]).replace(' ', '0'));
-            o_i[i] = binaryString;
+            String binaryString = String.format("%8s", Integer.toBinaryString(x_i[i])).replace(' ', '0');
+            StringBuilder reverse = new StringBuilder();
+            reverse.append(binaryString);
+            reverse = reverse.reverse();
+            o_i[i] = reverse.toString();
         }
-    
-        String o_0 = String.format("%8s", Integer.toBinaryString(n).replace(' ', '0'));
+
+        String o_0 = String.format("%8s", Integer.toBinaryString(n)).replace(' ', '0');
+        StringBuilder o_0r = new StringBuilder();
+        o_0r.append(o_0);
+        o_0r = o_0r.reverse();
 
         String result = "";
         for (int i = 1; i <= n; i++) {
-            result += o_i[i];
+            result = result + ' ' + o_i[i];
         }
-        result = o_0 + result;
-    
+        result = o_0r.toString() + result;
+
         return result;
     }
 
